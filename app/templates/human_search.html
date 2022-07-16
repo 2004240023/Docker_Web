@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>検索用htmlファイル</title>
+    </head>
+    <body>
+        <form action="http://127.0.0.1:5000/human_result">
+            検索対象：<br>
+
+            身長が<input type="number" value="" name="search_height"/ required>
+            <select name="select1" id="select1">
+                <option value=""></option>
+                <option value="以上">以上の人</option>
+                <option value="以下">以下の人</option>
+            </select><br>
+
+            体重が<input type="number" value="" name="search_weight"/ required>
+            <select name="select2" id="select2">
+                <option value=""></option>
+                <option value="以上">以上の人</option>
+                <option value="以下">以下の人</option>
+            </select><br>
+
+            <div>
+                <input type="radio" id="or" name="radio" value="or" checked>
+                <label for="or">or</label>
+              </div>
+          
+              <div>
+                <input type="radio" id="and" name="radio" value="and">
+                <label for="and">and</label>
+              </div>
+
+            <input type="submit" value="検索"/>
+        </form>
+    </body>
+</html>

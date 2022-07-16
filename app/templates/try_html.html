@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>try_html</title>
+    <head>
+      <style type="text/css">
+        /* td {color:blue;} */
+      </style>
+        
+        <link rel="stylesheet" href="{{url_for('static', filename='try_css.css')}}">
+        <script src={{ url_for("static", filename="try_js.js") }}></script>
+        <script src={{ url_for("static", filename="plotly-2.12.1.min.js") }}></script>
+
+    </head>
+      
+</head>
+<body>
+  <div id="try_graph" style="width:600px;height:250px;margin: auto;"></div>
+  <script>
+
+    var trace = {
+        x: [1, 2, 3, 4],
+        y: [10, 15, 13, 17],
+        mode: 'markers',
+        type: 'scatter',
+        name: 'Team A',
+        text:['A-1', 'A-2', 'A-3', 'A-4'],
+        // marker: { size: 6 }
+    };
+
+    var trace2 = {
+        x: [1, 2, 3, 4, 5],
+        y: [2, 16, 5, 11, 9],
+        mode: 'lines',
+        type: 'scatter',
+        name: 'Team B',
+        text:['B-1', 'B-2', 'B-3', 'B-4', 'B-4'],
+    };
+
+    var data = [trace,trace2];
+    Plotly.newPlot('try_graph', data);
+
+  </script>
+
+
+
+  <form method="POST" action="http://127.0.0.1:5000/show_data">
+    <div>
+    <label for="name">名前:
+      <input type="text" name="name" id="name">
+    </label>
+    <br>
+    <label for="age">年齢:
+      <input type="text" name="age" id="age">
+    </label>
+    <br>
+    <input type="submit" value="送信"/>
+  </form>
+</div>
+
+        <div><h1>try_html</h1></div>
+
+        
+        <table border="1" id="table_id">
+            <tr>
+              <th>名前</th>
+              <th>年齢</th>
+            </tr>
+            <tr>
+              <td style="color:red">枢木</td>
+              <td>18</td>
+            </tr>
+            <tr>
+              <td>紅月</td>
+              <td>18</td>
+            </tr>
+          </table>
+
+          <div>
+            <p>ボタンを押すと表の色が変わる
+              <input type="button" name="button" value="ボタン" onclick="change_table();">
+            </p>
+
+            <p>選択すると表の色が変わる
+              <select name="select" id="select_id" onchange="change_by_select(this);">
+                <option value="">なし</option>
+                <option value="red">赤</option>
+                <option value="blue">青</option>
+              </select>
+            </p>
+          </div>
+
+</body>
+</html>
