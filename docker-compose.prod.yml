@@ -1,0 +1,26 @@
+version: '3.3'
+
+services:
+ web:
+  build:
+   context: .
+   dockerfile: Dockerfile.prod
+   command: sh -c 'gunicorn --bind 0.0.0.0:5000 app:app'
+  ports:
+   - 80:5000
+  volumes:
+  - ./log:/app/log
+  env_file:
+  - ./.env.prod
+
+ mysqldb:
+  image: mysql
+  environment:
+  - MYSQL_ROOT_PASSWORD=p@ssw0rd1
+  volumes:
+  - mysql:/var/lib/mysql
+  - mysql_config:/etc/mysql
+  - ./init_mysql:/docker-entrypoint-initdb.d
+volumes:
+  mysql:
+  mysql_config:
